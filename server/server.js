@@ -17,7 +17,11 @@ let {authenticate} = require('./middleware/authenticate');
 // AWS SDK
 const aws = require('aws-sdk');
 const awsconfig = require('../s3_config.json');
-aws.config.update(awsconfig);
+aws.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-2',
+  });
 const s3 = new aws.S3()
 
 const port = process.env.PORT || 3000; // Stores all environment variables in key value pairs, we want port
