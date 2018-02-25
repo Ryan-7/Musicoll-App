@@ -77,7 +77,8 @@ app.get('/api/projects/list', authenticate, (req, res) => {
                 _.pick(item, ['_id', 'name'])
             )
         })
-        let newArr = JSON.stringify(newArray);
+      //  let newArr = JSON.stringify(newArray);
+        let newArry = [{name: 'test'}]
         console.log(newArr)
         res.status(200).send(newArr); // might need to turn this array into JSON 
     }).catch((err) => {
