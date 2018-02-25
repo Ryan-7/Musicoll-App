@@ -17,7 +17,7 @@ export class HttpService {
   }
   
   getProjectList() {
-    return this.httpClient.get('/api/projects/list', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth')), responseType: 'text'});
+    return this.httpClient.get('/api/projects/list', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth'))});
   } 
 
   getProjectById(projectId) {
