@@ -5,7 +5,6 @@ const multer  = require('multer');
 const multerS3 = require('multer-s3');
 
 const mongoose = require('./db/mongoose');
-const db = require('./db/db');
 const {ObjectID} = require('mongodb');
 const {Project} = require('./models/project');
 const {User} = require('./models/user');
