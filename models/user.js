@@ -64,7 +64,7 @@ UserSchema.methods.generateAuthToken = function() {
     let access = 'auth';
  
   //  let token = jwt.sign({_id: this._id, access: access}, theSalt.theSalt, {expiresIn: 60}).toString();
-    let token = jwt.sign({_id: this._id, access: access}, theSalt.theSalt).toString();
+    let token = jwt.sign({_id: this._id, access: access}, theSalt).toString();
 
     // 'this' refers to the user document we created 
     // Clear old tokens 
