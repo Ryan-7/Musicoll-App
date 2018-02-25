@@ -16,7 +16,7 @@ let {authenticate} = require('./middleware/authenticate');
 
 // AWS SDK
 const aws = require('aws-sdk');
-const awsconfig = require('../s3_config.json');
+// const awsconfig = require('../s3_config.json');
 aws.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
