@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer  = require('multer');
 const multerS3 = require('multer-s3');
-
+const path = require("path");
 const mongoose = require('./db/mongoose');
 const {ObjectID} = require('mongodb');
 const {Project} = require('./models/project');
