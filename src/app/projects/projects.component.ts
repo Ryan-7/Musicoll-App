@@ -29,6 +29,7 @@ export class ProjectsComponent implements OnInit {
 
   getProjectList() {
     this.httpService.getProjectList().subscribe((res) => {
+      console.log(res)
       //parse 
       this.projects = res;
     }, (err) => {
