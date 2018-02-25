@@ -21,14 +21,16 @@ export class ProjectsComponent implements OnInit {
   newProject() {
     this.httpService.newProject().subscribe((res) => {
       // parse
+      console.log(res)
       let projectId = res;
       this.router.navigate(['projects/'+ projectId]); // Route after New project created 
-      this.getProjectList(); // Update Project List
+     // this.getProjectList(); // Update Project List
     });
   }
 
   getProjectList() {
     this.httpService.getProjectList().subscribe((res1) => {
+     console.log('get list res:')
       console.log(res1)
       //parse 
     //  this.projects = res;
