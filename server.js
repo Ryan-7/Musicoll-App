@@ -71,13 +71,14 @@ app.get('/api/projects/new', authenticate, (req, res) => {
 
 app.get('/api/projects/list', authenticate, (req, res) => {
     Project.find({_creator: req.user._id}).then((results) => {
-        newArray = [];
+        let newArray = [];
         _.forEach(results, (item) => {
             newArray.push(
                 _.pick(item, ['_id', 'name'])
             )
         })
-        res.status(200).send(JSON.stringify(newArray)); // might need to turn this array into JSON 
+        let newArr = JSON.stringify(newArray);
+        res.status(200).send(JSON.stringify(newArr)); // might need to turn this array into JSON 
     }).catch((err) => {
         console.log(err)
     })
