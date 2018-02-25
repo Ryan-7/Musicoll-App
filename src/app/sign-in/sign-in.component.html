@@ -1,0 +1,22 @@
+<div class="row justify-content-md-center">
+<div class="col-md-4">
+<form>
+  <div class="md-form">
+      <i class="fa fa-envelope prefix grey-text"></i>
+      <input type="text" id="defaultForm-email" class="form-control" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email">
+  </div>
+
+  <div class="md-form">
+      <i class="fa fa-lock prefix grey-text"></i>
+      <input type="password" id="defaultForm-pass" class="form-control" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password">
+  </div>
+  <p class="text-center error-message" *ngIf="errorMessage" >Login failed. Please ensure you have entered the correct email and pasword.</p>
+  <div *ngIf="loading" class="text-center">
+    <i class="fa fa-spinner fa-spin spinner text-center" aria-hidden="true"></i>
+    </div>
+  <div class="text-center">
+      <button class="btn btn-default" (click)="signin()">Sign In</button>
+  </div>
+</form>
+
+</div>

@@ -1,0 +1,162 @@
+<div class="toolbar animated slideInRight">
+    <div class="inline-block">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        <span class="option" (click)="pdfModal()">Create PDF</span>
+    </div>
+    <div class="inline-block">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        <span class="option" (click)="deleteModal()">Delete Project</span>
+    </div>
+</div>
+ 
+
+ 
+<div class="spinner-container">
+        <i class="fa fa-spinner fa-spin spinner text-center" *ngIf="loading" aria-hidden="true"></i>
+</div>
+
+
+                
+
+<div class="card animated slideInDown" *ngIf="deletingProject">
+    <div class="card-body text-center">
+        <h4 class="card-title">Are you sure you want to delete '{{ project.name }}' ?</h4>
+        <p class="card-text text-center">You will not be able to recover any audio files or information related to this particular project.</p>
+        <a class="btn btn-info" (click)="cancelDelete()">Cancel</a>
+        <a class="btn btn-danger" (click)="deleteProject()">Delete</a>
+    </div>
+</div>
+
+<div class="card animated slideInDown" *ngIf="toPdf">
+    <div class="card-body text-center">
+        <h4 class="card-title">Create PDF of '{{ project.name }}' ?</h4>
+        <p class="card-text text-center">This will generate a PDF with your project's name and lyrics for easy printing and saving.</p>
+        <a class="btn btn-info" (click)="cancelPdf()">Cancel</a>
+        <a class="btn btn-danger" (click)="createPdf()">Save PDF</a>
+    </div>
+</div>
+
+<div class="card animated slideInDown" *ngIf="audioHelp">
+    <div class="card-body text-center">
+        <h4 class="card-title">Audio Recording</h4>
+        <p class="card-text text-center">This app uses your built-in computer microphone or external connected USB mic to record audio.</p>
+        <p class="card-text text-center">If you are experiencing issues, please make sure: </p>
+        <ul>
+            <li>You have allowed and given permission for the browser to access the microphone.</li>
+            <li>You are using a modern and updated browser such as Chrome or Firefox.</li>
+            <li>You are recording from a laptop or desktop computer. Mobile recording will be implemented in the future when this technology has become more standard.</li>
+        </ul>
+        <a class="btn btn-info" (click)="closeAudioHelpModal()">Close</a>
+    </div>
+</div>
+
+
+<div *ngIf="!loading">
+    <div class="jumbotron">
+
+
+
+
+        <!-- Title -->
+        <p>Title | <span (click)="edit('title')" class="edit">Edit</span></p>
+        <h1 *ngIf="!editingTitle" class="h1-responsive">{{ project.name }}</h1>
+
+        <div *ngIf="editingTitle">
+            <div class="md-form">
+                <input type="text" id="form1" class="form-control title-responsive" #title value="{{ project.name }}">
+            </div>
+            <div *ngIf="!savingTitle">
+                <button class="btn btn-sm btn-primary" (click)="save('title')">Save</button>
+                <button class="btn btn-sm btn-danger" (click)="cancel('title')">Cancel</button>
+            </div>
+            <div *ngIf="savingTitle">
+                <h3 class="animated infinite flash text-center">Saving</h3>
+            </div>
+        </div>
+        <hr> 
+
+        <!-- Audio-->
+
+        <p>Audio | <span class="edit" (click)="audioHelpModal()"><i class="fa fa-question-circle-o" aria-hidden="true"></i></span></p>
+        <!-- <audio controls>
+                <source src="" type="audio/ogg">
+                <source src="" type="audio/mpeg">
+              Your browser does not support the audio element.
+        </audio><br><br> -->
+
+       
+        <app-recorder [currentProjectId]="projectId" (onAudioTrackAdded)="updateAudioListing($event)"></app-recorder>
+
+        
+        <br><br>
+      
+        <div class="list-group list-small" *ngFor="let audio of project.audio | reverse">
+                <div *ngIf="!audio.deleteModal" class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ audio.title }}</h5>
+                    <!-- <small>3 days ago</small> -->
+                  </div>
+                  <p>{{ audio.description }}</p>
+                  <button class="btn btn-sm btn-primary center-block playback" [disabled]="audio.isActive || audioPlaying" (click)="play(audio.file)" (click)="audio.isActive = !audio.isActive"><i class="fa fa-play" aria-hidden="true"></i></button>
+                  <button class="btn btn-sm btn-primary center-block playback" [disabled]="audio.isActive || audioPlaying" (click)="loop(audio.file)" (click)="audio.isActive = !audio.isActive"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                  <button class="btn btn-sm btn-primary center-block playback" [disabled]="!audio.isActive || !audioPlaying" (click)="pause()" (click)="audio.isActive = !audio.isActive"><i class="fa fa-stop" aria-hidden="true"></i></button>
+                  <button class="btn btn-sm btn-danger center-block playback" [disabled]="audio.isActive || audioPlaying" (click)="audio.deleteModal = !audio.deleteModal"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>
+
+              
+              <div *ngIf="audio.deleteModal">
+                    <p class="text-center">Are you sure you want to delete '{{ audio.title }}' ?</p>
+                    <button class="btn btn-sm btn-info" (click)="audio.deleteModal = !audio.deleteModal">Cancel</button>
+                    <button class="btn btn-sm btn-danger" (click)="audio.deleteModal = !audio.deleteModal" (click)="deleteAudioFile(audio._id, audio.key)">Delete</button>
+              </div>
+                <br>
+              </div>
+
+
+  
+        <hr>
+        <!-- Lyrics -->
+        <p>Lyrics | <span (click)="edit('lyrics')" class="edit">Edit</span></p>
+        
+        <div *ngIf="editingLyrics">
+            <div class="md-form">
+                <textarea type="text" class="md-textarea lyrics lyrics-edit" #lyrics autosize>{{ project.lyrics }}</textarea>
+            </div>
+            <div *ngIf="!savingLyrics">
+                <button class="btn btn-sm btn-primary" (click)="save('lyrics')">Save</button>
+                <button class="btn btn-sm btn-danger" (click)="cancel('lyrics')">Cancel</button>
+            </div>
+            <div *ngIf="savingLyrics">
+                    <h3 class="animated infinite flash text-center">Saving</h3>
+            </div>
+        </div>
+
+        <div *ngIf="!editingLyrics" class="lyrics">
+            {{ project.lyrics }}
+        </div>
+        <hr>
+
+        <!-- Notes -->
+        <p>Notes | <span (click)="edit('notes')" class="edit">Edit</span></p>
+        <div *ngIf="editingNotes">
+            <div class="md-form">
+                <textarea type="text" class="md-textarea notes notes-edit" #notes autosize>{{ project.notes }}</textarea>
+            </div>
+            <div *ngIf="!savingNotes">
+                <button class="btn btn-sm btn-primary" (click)="save('notes')">Save</button>
+                <button class="btn btn-sm btn-danger" (click)="cancel('notes')">Cancel</button>
+            </div>
+            <div *ngIf="savingNotes">
+                <h3 class="animated infinite flash text-center">Saving</h3>
+            </div>
+        </div>
+        <div *ngIf="!editingNotes" class="notes">
+                {{ project.notes }}
+        </div>
+
+    </div>
+
+    <button class="btn btn-danger center-block mobile-delete" (click)="deleteModal()">Delete Project</button>
+    
+</div>
+

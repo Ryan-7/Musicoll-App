@@ -1,0 +1,43 @@
+.list-group .list-group-item.active {
+    background-color: #18BEB2;
+    border-color: #18BEB2;
+}
+
+.col-md-3 {
+    max-width: 300px
+}
+
+.mobile-projects {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .col-md-3 {
+        max-width: unset;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        display: none;
+    }
+
+    .mobile-projects {
+        display: block;
+        max-height: 150px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    .desktop-project-list {
+        display: none;
+    }
+
+    .hidden {
+        display: initial;
+    }
+    
+}

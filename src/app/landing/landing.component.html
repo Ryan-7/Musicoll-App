@@ -1,0 +1,67 @@
+
+<div class="center-block">
+  <h1 class="text-center">Musicoll</h1>
+  <h3 class="text-center">Record and save your ideas right on the web.</h3>
+
+  <div class="landing-buttons text-center">
+    <button class="btn btn-primary center-block" *ngIf="!authService.loggedIn() && showOptions" (click)="onSignUp()">Sign Up</button>
+    <button class="btn btn-default center-block" *ngIf="!authService.loggedIn() && showOptions" (click)="onSignIn()">Sign In</button>
+    <button class="btn btn-default center-block" *ngIf="authService.loggedIn()" routerLink="/projects">Go to projects</button>
+  </div>
+
+  <app-sign-in *ngIf="!authService.loggedIn() && signIn"></app-sign-in>
+  <app-signup *ngIf="!authService.loggedIn() && signUp"></app-signup>
+
+  <p *ngIf="!authService.loggedIn() && !showOptions && signIn" class="text-center detail">Don't have an account? <a (click)="onSignUp()">Click to signup</a></p>
+  <p *ngIf="!authService.loggedIn() && !showOptions && signUp" class="text-center detail">Already have an account? <a (click)="onSignIn()">Click to login</a></p>
+  <!-- <h3 class="text-center" style="margin-top: 40px; margin-bottom: 40px"><a routerLink="/projects">Click Here to Demo</a></h3> -->
+</div>
+
+<div class="container card-container">
+  <div class="row bottom">
+    <div class="col-sm">
+
+<div class="card card-cascade narrower">
+      <div class="view overlay hm-white-slight text-center">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+      </div>
+
+
+      <div class="card-body">
+          <h4 class="card-title text-center">Record from the browser</h4>
+          <p class="card-text">Use your computer's microphone and browser to record and save musical ideas instantly.</p>
+      </div>
+
+  
+  </div>
+
+  
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="view overlay hm-white-slight text-center">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-center">Quickly prototype songs</h4>
+            <p class="card-text">No need for recording software or hardware. Record and save your ideas, variations, lyrics and notes with the click of a button.</p>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm">
+      <div class="card">
+        <div class="view overlay hm-white-slight text-center">
+                <i class="fa fa-upload" aria-hidden="true"></i>
+
+        </div>
+        <div class="card-body">
+            <h4 class="card-title text-center">Access from anywhere</h4>
+            <p class="card-text">Listen to your recordings and modify your lyrics anywhere with an internet connection.</p>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

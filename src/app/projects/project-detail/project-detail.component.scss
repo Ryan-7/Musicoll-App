@@ -1,0 +1,228 @@
+.jumbotron {
+    margin-top: 50px;
+    transition: .5s;
+}
+
+.spinner-container {
+    position: relative;
+}
+
+.spinner {
+    font-size: 76px;
+    color: #4E7BEE;
+    top: 150px;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
+    z-index: 3;
+}
+
+.edit-title {
+    color: #4E7BEE;
+    font-size: 16px;
+    padding-left: 10px;
+    transition: .25s;
+}
+
+.edit-title:hover {
+    color: #4E7BEE;
+    cursor: pointer;
+}
+
+input {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400 !important;
+ }
+
+ .edit {
+     color: #4E7BEE;
+     transition: .5s;
+ }
+
+ .edit:hover {
+     color: red;
+     cursor: pointer;
+ }
+ 
+ p {
+     text-align: left;
+     transition: .5s;
+ }
+
+ h1 {
+     padding-bottom: 20px;
+     color: #18BEB2;
+     font-weight: 700;
+ }
+
+ .lyrics {
+    text-align: center;
+    white-space: pre;
+    font-weight: 300;
+    height: auto;
+    position: relative;
+    bottom: 20px;
+    font-size: .9rem;
+    color: #747373;
+    font-weight: 400;
+ }
+
+ .lyrics-edit {
+     color: black;
+ }
+
+.notes {
+    text-align: left;
+    font-weight: 300;
+    font-size: .9rem;
+    color: #747373;
+    font-weight: 400;
+    white-space: pre;
+}
+
+.notes-edit {
+    color: black;
+}
+ textarea.md-textarea {
+     padding: 0 0 10px 0;
+     font-weight: 400; 
+     margin: 0 auto;
+ }
+
+ .md-form {
+     margin-bottom: 0;
+ }
+
+ .card-header, .card-body {
+     text-align: left;
+     color: #747373;
+ }
+ .card-header {
+     font-size: 12px;
+ }
+
+ .btn-comment {
+     margin-bottom: 40px;
+ }
+
+ .list-small {
+     width: 75%;
+     margin: 0 auto;
+ }
+
+.jumbotron {
+     border-top: 10px solid #00BEB4;
+     border-bottom: 10px solid #00BEB4;
+    // border-right: 2px solid #00CB5F;
+    // border-left: 2px solid #00CB5F;
+    
+}
+
+p {
+    font-weight: 400;
+}
+
+.toolbar {
+    position: fixed;
+    right: -135px;
+    top: 200px;
+    height: auto;
+    width: 200px;
+    background-color: #4E7BEE;
+    text-align: left;
+    padding-left: 20px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    transition: .5s;
+    z-index: 5;
+}
+
+.toolbar:hover {
+    position: fixed;
+    right: 0;
+    top: 200px;
+    height: auto;
+    width: 200px;
+    background-color: #4E7BEE;
+    text-align: left;
+    padding-left: 20px;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    z-index: 5;
+}
+
+.toolbar .fa {
+    color: white;
+    font-size: 26px;
+    text-align: left;
+    margin: 10px 15px 10px 5px;
+}
+
+.option {
+    font-weight: 500;
+    transition: .5s;
+}
+.option:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.playback {
+    min-width: 50px;
+}
+
+ul li {
+    text-align: left;
+    font-size: 14px;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.mobile-delete {
+    margin-bottom: 25px;
+}
+
+.list-group p {
+    font-size: 12px;
+}
+
+.list-group-item {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .toolbar {
+        display: none;
+    }
+
+    .title-responsive {
+        font-size: 150%;
+    }
+
+    .list-small {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .jumbotron {
+        padding: 1rem;
+    }
+
+    .lyrics {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .mobile-delete {
+        display: none;
+    }
+}

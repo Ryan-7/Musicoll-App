@@ -1,0 +1,28 @@
+
+<div class="row text-center"> 
+    <div class="col-md-3 sidebar">
+      <h3>Project List</h3>
+      <button class="btn btn-primary" (click)="newProject()">New Project</button>
+      <div class="md-form form-sm">
+          <input type="text" id="form1" class="form-control" placeholder="Search" [(ngModel)]="filteredProject">
+      </div>
+ 
+      <div class="list-group desktop-project-list" *ngFor="let project of projects | search:filteredProject">
+          <a [routerLink]="[project._id]" routerLinkActive="active" class="list-group-item list-group-item-action">{{ project.name | shorten }}</a>
+      </div>
+
+      <!-- Mobile Only -->
+    <i class="fa fa-caret-up hidden" [hidden]="projects?.length < 4" aria-hidden="true"></i>
+    <div class="mobile-projects"> 
+        <div class="list-group" *ngFor="let project of projects | search:filteredProject">
+            <a [routerLink]="[project._id]" routerLinkActive="active" class="list-group-item list-group-item-action">{{ project.name | shorten }}</a>
+        </div>
+    </div>
+    <i class="fa fa-caret-down hidden" [hidden]="projects?.length < 4"  aria-hidden="true"></i>
+
+
+    </div>
+    <div class="col-md-9 text-center">
+        <router-outlet></router-outlet>
+    </div>
+  </div>

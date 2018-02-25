@@ -1,0 +1,27 @@
+<div [hidden]="!savingRecording">
+        <i class="fa fa-spinner fa-spin spinner text-center" aria-hidden="true"></i>
+</div>
+
+<div [hidden]="savingRecording">
+    <button class="btn btn-success" [disabled]="errorRecording" *ngIf="!recording && !recorderHasTrack" (click)="startRecording()">Start Recording <i class="fa fa-microphone" aria-hidden="true"></i></button>
+    <button class="btn btn-danger" *ngIf="recording && !recorderHasTrack" (click)="stopRecording()">Stop Recording <i class="fa fa-microphone-slash" aria-hidden="true"></i></button>
+
+    <p class="text-center error-message" *ngIf="errorRecording"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> There was a problem accessing your device's microphone.</p>
+
+    <br><br>
+    <p class="recording animated infinite flash" *ngIf="recording">Recording... <i class="fa fa-microphone" aria-hidden="true"></i></p>
+
+    <div [hidden]="!recorderHasTrack">
+    <audio #audioPlayback controls>
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+
+    <div class="form-sm">
+        <input type="text" class="form-control" [(ngModel)]="trackName" placeholder="Name" maxlength="30">
+        <input type="text" class="form-control" [(ngModel)]="trackDescription" placeholder="Description" maxlength="100">
+    </div>  
+    <button class="btn btn-primary btn-md center-block" (click)="saveRecording()" [disabled]="trackName?.length < 1 || trackDescription?.length < 1">Save to Project</button>
+    <button class="btn btn-danger btn-md center-block" (click)="deleteRecording()">Delete Recording</button>
+    </div>
+</div>
