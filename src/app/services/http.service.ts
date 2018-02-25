@@ -13,11 +13,11 @@ export class HttpService {
   
 
   newProject() {
-    return this.httpClient.get('/api/projects/new', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth'))});
+    return this.httpClient.get('/api/projects/new', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth')), responseType: 'text'});
   }
   
   getProjectList() {
-    return this.httpClient.get('/api/projects/list', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth'))});
+    return this.httpClient.get('/api/projects/list', {headers: new HttpHeaders().set('musicoll-auth', localStorage.getItem('musicollAuth')), responseType: 'text'});
   } 
 
   getProjectById(projectId) {
