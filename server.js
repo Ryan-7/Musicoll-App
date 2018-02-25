@@ -69,7 +69,7 @@ app.get('/api/projects/new', authenticate, (req, res) => {
 // Return the names and Id of each project so we can link on the client side.
 // No need to return all project data,'pick' is a very useful method here.
 
-app.get('/api/projects/list', authenticate, (req, res) => {
+app.get('/api/projects/list', authenticate, (req, response) => {
     Project.find({_creator: req.user._id}).then((results) => {
         let newArray = [];
         _.forEach(results, (item) => {
