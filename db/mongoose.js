@@ -9,7 +9,7 @@ Example: MongoClient.connect('mongodb://localhost:27017/TodoApp')
 
 const mongoose = require('mongoose');
 
-const db; 
+let db; 
 
 const theURI = process.env.MONGODB_URI
 
