@@ -78,8 +78,8 @@ app.get('/api/projects/list', authenticate, (req, res) => {
             )
         })
       //  let newArr = JSON.stringify(newArray);
-        let newArry = [{name: 'test'}]
-        console.log(newArr)
+        let someArr = [{name: 'test'}]
+        let newArr = JSON.stringify(someArr)
         res.status(200).send(newArr); // might need to turn this array into JSON 
     }).catch((err) => {
         console.log(err)
