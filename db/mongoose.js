@@ -15,7 +15,7 @@ const theURI = process.env.MONGODB_URI
 
 // mongoose.connect('mongodb://localhost:27017/musicoll'); // Where MongoDB is connected
 
-mongodb.MongoClient.connect(theURI, function (err, database) {
+mongoose.connect(theURI, function (err, database) {
     if (err) {
       console.log(err);
       process.exit(1);
