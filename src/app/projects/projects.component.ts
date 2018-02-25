@@ -20,6 +20,7 @@ export class ProjectsComponent implements OnInit {
 
   newProject() {
     this.httpService.newProject().subscribe((res) => {
+      // parse
       let projectId = res;
       this.router.navigate(['projects/'+ projectId]); // Route after New project created 
       this.getProjectList(); // Update Project List
@@ -28,6 +29,7 @@ export class ProjectsComponent implements OnInit {
 
   getProjectList() {
     this.httpService.getProjectList().subscribe((res) => {
+      //parse 
       this.projects = res;
     }, (err) => {
       console.log(err);
