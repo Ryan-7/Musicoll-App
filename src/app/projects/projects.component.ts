@@ -28,10 +28,10 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjectList() {
-    this.httpService.getProjectList().subscribe((res) => {
-      console.log(res)
+    this.httpService.getProjectList().subscribe((res1) => {
+      console.log(res1)
       //parse 
-      this.projects = res;
+    //  this.projects = res;
     }, (err) => {
       console.log(err);
     })
