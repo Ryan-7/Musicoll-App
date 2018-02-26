@@ -84,7 +84,7 @@ UserSchema.statics.findByToken = function(token) {
     let decoded;
 
     try {
-        decoded = jwt.verify(token, theSalt.theSalt);
+        decoded = jwt.verify(token, theSalt);
     } catch(e) {
         return Promise.reject('Authentication Failed');
     }
