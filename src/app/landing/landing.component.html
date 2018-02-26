@@ -12,7 +12,7 @@
   <app-sign-in *ngIf="!authService.loggedIn() && signIn"></app-sign-in>
   <app-signup *ngIf="!authService.loggedIn() && signUp"></app-signup>
 
-  <p class="if-mobile"><b>Note: </b> It appears you are on a mobile browser. Musicoll currently works best as a desktop application. Support will arrive once mobile browser mic API's becomes more standard./p>
+  <p class="if-mobile"><b>Note: </b> It appears you are on a mobile browser. Musicoll currently works best as a desktop application. Support will arrive once mobile browser mic API's become more standard.</p>
 
   <p *ngIf="!authService.loggedIn() && !showOptions && signIn" class="text-center detail">Don't have an account? <a (click)="onSignUp()">Click to signup</a></p>
   <p *ngIf="!authService.loggedIn() && !showOptions && signUp" class="text-center detail">Already have an account? <a (click)="onSignIn()">Click to login</a></p>

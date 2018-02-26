@@ -47,11 +47,6 @@ const distDir = __dirname + "/dist/";
 app.use(express.static(distDir));
 
 
-// app.get('/', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/dist/index.html'));
-//   });
-
-
 
 // Middleware for parsing incoming body for JSON. 
  app.use(bodyParser.json());
@@ -309,6 +304,11 @@ app.delete('/api/users/logout', authenticate, (req, res) => {
     })
 })
 
+
+// Catch all for navigation by URL than by handlers 
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 
 // Seed Data used for Dev 
