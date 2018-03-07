@@ -123,7 +123,6 @@ UserSchema.statics.findByCredentials = function(email, password) {
                         resolve(user)
                     } else {
                         reject();
-                        return Promise.reject();
                     }
                 })
             })
