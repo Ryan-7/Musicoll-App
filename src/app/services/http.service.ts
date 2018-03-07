@@ -14,7 +14,7 @@ export class HttpService {
 
 
 
-  host; 
+  host = ''; 
 
 
   newProject() {
