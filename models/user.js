@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-// const theSalt = require('../../theSalt'); 
-const theSalt = process.env.theSalt;
 
+
+
+// const {theSalt} = require('../theSalt'); 
+
+const theSalt = process.env.theSalt
 
 // Define our Schema outside of the model so we can tack on our own methods 
 
