@@ -12,7 +12,7 @@ export class AuthService {
   }
 
   
-  host; 
+  host = ''; 
 
   // Must set responseType to text or Angular tries to parse non-existent JSON and throws an error... 
   signup(userInfo) {
