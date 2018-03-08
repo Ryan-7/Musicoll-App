@@ -15,12 +15,12 @@ export class HeaderComponent implements OnInit {
 
 
   signout() {
-    // this.authService.logout().subscribe((res) => {
-    //   console.log("token deleted")
-    //   console.log("logged out")
-    // }, (err) => {
-    //   console.log("could not delete token")
-    // })
+    this.authService.logout().subscribe((res) => {
+      console.log("token deleted")
+      console.log("logged out")
+    }, (err) => {
+      console.log("could not delete token")
+    })
     localStorage.clear();
     this.router.navigate(['/']);
   }
