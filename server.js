@@ -20,9 +20,9 @@ const aws = require('aws-sdk');
 
 
 aws.config.update({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: 'us-east-2',
+    accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-1',
   });
 
 
@@ -123,7 +123,7 @@ app.patch('/api/projects/:id', authenticate, (req, res) => {
     })
 
 
-    s3.deleteObjects({Bucket: 'musicollapp', Delete: {Objects: newAudioKeysArray}}, (error, response) => {
+    s3.deleteObjects({Bucket: process.env.BUCKETEER_BUCKET_NAME, Delete: {Objects: newAudioKeysArray}}, (error, response) => {
         if(error) {
             console.log(error);
         } else {
@@ -155,7 +155,7 @@ app.patch('/api/update/projects/:id', authenticate, (req, res) => {
 const upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'musicollapp',
+        bucket: process.env.BUCKETEER_BUCKET_NAME,
         acl: 'public-read-write',
         key: function (req, file, cb) {
             let randomFileName = Math.random().toString(36).substring(7);
@@ -199,7 +199,7 @@ app.patch('/api/projects/audio/:id', authenticate, (req, res) => {
     let audioKey = req.body.audioKey;
 
     let deleteParams = {
-        Bucket: 'musicollapp',
+        Bucket: process.env.BUCKETEER_BUCKET_NAME,
         Delete: {
             Objects: [
                 {
@@ -254,7 +254,7 @@ app.post('/api/users/register', (req, res) => {
             notes: '\nThis song is written in the key of C#',
             audio: [
                 {
-                    file: "https://s3.us-east-2.amazonaws.com/musicollapp/sample.ogg",
+                    file: "https://bucketeer-68cf1b1c-96cd-4202-8972-5673180e3d8c.s3.amazonaws.com/public/sample.ogg",
                     title: 'Catchy Acoustic Guitar Rhythm',
                     description: 'A song I came up with while making this app...Key of A major.',
                     date: new Date(),
